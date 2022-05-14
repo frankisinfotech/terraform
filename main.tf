@@ -84,25 +84,26 @@ resource "aws_instance" "lifebit" {
   key_name 		= aws_key_pair.lifebit.key_name
   security_groups	= ["${aws_security_group.lifebit_SG.id}"]
   
-  user_data	= <<EOF
+  user_data	= file('install_app.sh') # Where the entire content of the script below is defined in the "install_app.sh" file.
+# user_data	= <<EOF
 
-	#!/bin/bash
+#	#!/bin/bash
 	
-	#Installing git and cloning the repository
-	yum install git -y
-	mkdir lifebit_test
-	cd lifebit_test
-	git clone https://github.com/nodejs/examples.git
-	cd examples/servers/express/api-with-express-and-handlebars
-
+#	#Installing git and cloning the repository
+#	yum install git -y
+#	mkdir lifebit_test
+#	cd lifebit_test
+#	git clone https://github.com/nodejs/examples.git
+#	cd examples/servers/express/api-with-express-and-handlebars
+#
 	#Installing Nodejs
-	yum -y install curl
-	curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash -
-	yum install -y nodejs
-	npm install
-	npm start &
+#	yum -y install curl
+#	curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash -
+#	yum install -y nodejs
+#	npm install
+#	npm start &
 
-EOF
+#EOF
 
   tags = {
     Name		= "LifeBitVM"
