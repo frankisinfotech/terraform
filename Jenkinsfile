@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage ('Terraform Init') {
       steps {
-        sh 'cd /var/lib/jenkins/workspace/terra-deploy'
+        sh 'cd /var/lib/jenkins/workspace/terra-deploy/ec2'
         sh 'terraform init'
       }
     }
