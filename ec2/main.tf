@@ -84,7 +84,7 @@ resource "aws_instance" "lifebit" {
   key_name 		= aws_key_pair.lifebit.key_name
   security_groups	= ["${aws_security_group.lifebit_SG.id}"]
   
-  user_data	= file('install_app.sh') # Where the entire content of the script below is defined in the "install_app.sh" file.
+  user_data	= file("install_app.sh") # Where the entire content of the script below is defined in the "install_app.sh" file.
 # user_data	= <<EOF
 
 #	#!/bin/bash
