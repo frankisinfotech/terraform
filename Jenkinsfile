@@ -10,9 +10,11 @@ pipeline {
     }
     stage ('Terraform Init') {
       steps {
+        dir('ec2') {
         sh 'cd /var/lib/jenkins/workspace/terra-deploy/ec2'
         sh 'terraform init'
       }
+    }
     }
     
      stage ('Terraform apply') {
