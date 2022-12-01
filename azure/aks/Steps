@@ -1,0 +1,31 @@
+https://developer.hashicorp.com/terraform/tutorials/kubernetes/aks
+
+
+
+
+az login
+
+Create an Active Directory service principal account
+There are many ways to authenticate to the Azure provider. In this tutorial, you will use an Active Directory service principal account. 
+You can learn how to authenticate using a different method here.
+
+First, you need to create an Active Directory service principal account using the Azure CLI. You should see something like the following.
+
+ az ad sp create-for-rbac --skip-assignment
+{
+  "appId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+  "displayName": "azure-cli-2019-04-11-00-46-05",
+  "name": "http://azure-cli-2019-04-11-00-46-05",
+  "password": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+  "tenant": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+}
+
+
+Update your terraform.tfvars file
+Replace the values in your terraform.tfvars file with your appId and password. 
+Terraform will use these values to authenticate to Azure before provisioning your resources. 
+Your terraform.tfvars file should look like the following.
+
+# terraform.tfvars
+appId    = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+password = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
