@@ -90,7 +90,7 @@ variable "db_admin" {
 
 variable "admin_password" {
   description = "Admin password for the MySQL server"
-  default     = "Password@123!"
+  default     = "xxxxxxxxxx"
 }
 
 variable "mysql_version" {
